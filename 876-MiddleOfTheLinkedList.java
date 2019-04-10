@@ -6,21 +6,36 @@
  *     ListNode(int x) { val = x; } 
  * }
  */
-class Solution {
+
+ class Solution {
     public ListNode middleNode(ListNode head) {
-        int cnt = 0;
+        ListNode oneStep = head;
+        ListNode twoSteps = head;
 
-        ListNode cur = head;
-
-        while (cur != null) {
-            ++cnt;
-            cur = cur.next;
+        while (twoSteps != null && twoSteps.next != null) {
+            oneStep = oneStep.next;
+            twoSteps = twoSteps.next.next;
         }
 
-        for (int i = 0; i < cnt / 2; ++i) {
-            head = head.next;
-        }
-
-        return head;
+        return oneStep;
     }
 }
+
+// class Solution {
+//     public ListNode middleNode(ListNode head) {
+//         int cnt = 0;
+
+//         ListNode cur = head;
+
+//         while (cur != null) {
+//             ++cnt;
+//             cur = cur.next;
+//         }
+
+//         for (int i = 0; i < cnt / 2; ++i) {
+//             head = head.next;
+//         }
+
+//         return head;
+//     }
+// }
