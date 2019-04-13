@@ -1,22 +1,38 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
+        if (nums.length == 0)
+            return 0;
 
-        if (nums.length < 2)
-            return nums.length;
-
-        int index = 1;
-        int slow = 0;
-        int fast = 1;
-
-        while (fast < nums.length) {
-            if (nums[fast] != nums[slow]) {
-                nums[index++] = nums[fast];
-                slow = fast;
+        int i = 0;
+        for (int j = 1; j < nums.length; ++j) {
+            if (nums[i] != nums[j]) {
+                nums[++i] = nums[j];
             }
-
-            ++fast;
         }
 
-        return index;
+        return i + 1;
     }
 }
+
+// class Solution {
+//     public int removeDuplicates(int[] nums) {
+
+//         if (nums.length < 2)
+//             return nums.length;
+
+//         int index = 1;
+//         int slow = 0;
+//         int fast = 1;
+
+//         while (fast < nums.length) {
+//             if (nums[fast] != nums[slow]) {
+//                 nums[index++] = nums[fast];
+//                 slow = fast;
+//             }
+
+//             ++fast;
+//         }
+
+//         return index;
+//     }
+// }
